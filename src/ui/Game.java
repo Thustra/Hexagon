@@ -2,14 +2,10 @@ package ui;
 
 import java.util.Iterator;
 
-import com.sun.javafx.event.EventHandlerManager;
-
-import world.HexMap;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -61,7 +57,12 @@ public class Game extends Application {
 
 			@Override
 			public void handle(MouseEvent event) {
+				try{
 				controller.highlightNeighbours((int)event.getX(), (int)event.getY());
+				} catch(NullPointerException e){
+					System.out.println("No map generated yet!");
+				}
+				
 			}
 		});
 		
@@ -97,7 +98,11 @@ public class Game extends Application {
 
             				@Override
             				public void handle(MouseEvent event) {
-            					controller.highlight((Polygon)nextNode);
+            					if (event.isAltDown()){
+            						controller.highlightNeighbours((Polygon)nextNode);
+            					} else {
+            						controller.highlight((Polygon)nextNode);
+            					}
             				}
             			});
             		}

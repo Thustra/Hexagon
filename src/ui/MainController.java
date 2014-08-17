@@ -51,18 +51,28 @@ public class MainController {
 		}
 	}
 	
-	public void highlightNeighbours(int x, int y) {
-		HexMap nb = worldMap.getHexagonByScreenCoordinates(x, y).getNeighbours();	
-		Iterator it = nb.getHashOfHexes().entrySet().iterator();
-		while(it.hasNext()){
-			Map.Entry pairs = (Map.Entry)it.next();
-			worldMap.getByCoordinate((Coordinate) pairs.getKey()).setHexColor(Color.RED);
+	// TODO Make this method work with a polygon object 
+	// Figure out if I should abstract the JavaFX from the rest, aka can things behind the controller know of 'polygon'
+	
+	public void highlightNeighbours(Polygon polygon) {
+		if (worldMap == null){
+			throw new NullPointerException();
+		}else{
+			HexMap nb = worldMap.getHexagonByScreenCoordinates(x, y).getNeighbours();	
+			Iterator it = nb.getHashOfHexes().entrySet().iterator();
+			while(it.hasNext()){
+				Map.Entry pairs = (Map.Entry)it.next();
+				worldMap.getByCoordinate((Coordinate) pairs.getKey()).setHexColor(Color.RED);
+			}
 		}
 	}
 
 	public void highlight(Polygon nextNode) {
-		nextNode.setFill(Color.RED);
-	}
-		
+		if (nextNode.getFill() == Color.GREENYELLOW){
+			nextNode.setFill(Color.RED);
+		} else{
+			nextNode.setFill(Color.GREENYELLOW);
+		}
+	}		
 }
 

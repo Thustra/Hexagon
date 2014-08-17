@@ -1,5 +1,4 @@
 package ui;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
 import java.awt.event.MouseEvent;
@@ -7,6 +6,8 @@ import java.awt.event.MouseListener;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
+
+import javafx.scene.paint.Color;
 
 import javax.swing.JPanel;
 
@@ -70,7 +71,7 @@ public class DrawMap extends JPanel {
 		Iterator it = nb.getHashOfHexes().entrySet().iterator();
 		while(it.hasNext()){
 			Map.Entry pairs = (Map.Entry)it.next();
-			worldmap.getByCoordinate((Coordinate) pairs.getKey()).setHexColor(new Color(125,0,0));
+			worldmap.getByCoordinate((Coordinate) pairs.getKey()).setHexColor(Color.AQUAMARINE);
 		}
 		repaint();
 	}
