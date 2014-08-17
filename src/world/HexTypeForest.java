@@ -1,6 +1,7 @@
 package world;
 
-import java.awt.Color;
+import javafx.scene.paint.Color;
+
 
 public class HexTypeForest extends hexType {
 	

@@ -1,9 +1,10 @@
 package world;
 
-import java.awt.Color;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import javafx.scene.paint.Color;
 
 public class Hexagon implements Tile {
 	
@@ -104,8 +105,8 @@ public class Hexagon implements Tile {
 	public Color getHexColor() {
 		return overlay.getColor();
 	}
-	public void setHexColor(Color hexColor) {
-		this.overlay.setColor(hexColor);
+	public void setHexColor(javafx.scene.paint.Color red) {
+		this.overlay.setColor(red);
 	}
 	
 //	public void switchHexColor(){

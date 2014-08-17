@@ -1,14 +1,21 @@
 package ui;
 
+import java.util.Iterator;
+
+import com.sun.javafx.event.EventHandlerManager;
+
 import world.HexMap;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.ToolBar;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -50,6 +57,14 @@ public class Game extends Application {
 
 	private Pane addContent() {
 		Pane mapPane = new Pane();
+		mapPane.setOnMouseClicked(new EventHandler<MouseEvent>(){
+
+			@Override
+			public void handle(MouseEvent event) {
+				controller.highlightNeighbours((int)event.getX(), (int)event.getY());
+			}
+		});
+		
 		return mapPane;
 	}
 
@@ -73,6 +88,20 @@ public class Game extends Application {
             public void handle(ActionEvent event) {
 
             	controller.doGenerateNewMap((Pane)root.getCenter());
+            	
+            	Iterator<Node> it = ((Pane) root.getCenter()).getChildren().iterator();
+            	while (it.hasNext()){
+            		final Node nextNode = it.next();
+            		if (nextNode instanceof Polygon){
+            			nextNode.setOnMouseClicked(new EventHandler<MouseEvent>(){
+
+            				@Override
+            				public void handle(MouseEvent event) {
+            					controller.highlight((Polygon)nextNode);
+            				}
+            			});
+            		}
+            	}
             	
             }
         });

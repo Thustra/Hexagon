@@ -1,6 +1,6 @@
 package world;
 
-import java.awt.Color;
+import javafx.scene.paint.Color;
 
 /**
  * 
@@ -18,7 +18,7 @@ public class hexType {
 	
 	private String label;
 	
-	private Color color;
+	private javafx.scene.paint.Color color;
 	/**
 	 * Default constructor creates a "Plains" tile which has a movement cost of 1. Higher value means more difficult to cross.
 	 * Except for 0 which means not crossable.
@@ -50,8 +50,8 @@ public class hexType {
 		return color;
 	}
 
-	public void setColor(Color color) {
-		this.color = color;
+	public void setColor(javafx.scene.paint.Color red) {
+		this.color = red;
 	}
 
 }
