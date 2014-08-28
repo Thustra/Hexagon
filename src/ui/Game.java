@@ -87,8 +87,16 @@ public class Game extends Application {
 		generateButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+            	
+            	/**
+            	 * Generate a new map
+            	 */
+            	
             	controller.doGenerateNewMap((Pane)root.getCenter());
+            	
+            	/**
+            	 * Set an onClick action to each polygon making up the map
+            	 */
             	
             	Iterator<Node> it = ((Pane) root.getCenter()).getChildren().iterator();
             	while (it.hasNext()){
